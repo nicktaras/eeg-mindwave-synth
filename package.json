@@ -1,0 +1,29 @@
+{
+  "name": "brain-to-sound",
+  "version": "1.0.0",
+  "description": "Convert brain waves to sound",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicktaras/brain-to-sound.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicktaras/brain-to-sound/issues"
+  },
+  "homepage": "https://github.com/nicktaras/brain-to-sound#readme",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.1.3"
+  }
+}

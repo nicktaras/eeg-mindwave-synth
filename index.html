@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    .box {
+      margin: 20px;
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 20px;
+      width: fit-content;
+    }
+
+    .item-label {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .title {
+      text-align: center;
+      font-family: 'verdana', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .flex.space {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .wave-box {
+      overflow: scroll;
+    }
+
+    .wave-box-inner {
+      width: 820px;
+      overflow: scroll;
+    }
+
+    .wave-button {
+      float: left;
+      height: 150px;
+      width: 120px;
+      padding: 5px;
+      margin: 28px 20px;
+      cursor: pointer;
+    }
+
+    .osc-box {
+      width: 264px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="box synth-box" style="width: 90%; margin: 5%; padding: 0;">
+
+    <div class="flex space">
+
+      <div class="box power-box">
+        <button id="play">On</button>
+        <button id="stop">Off</button>
+      </div>
+
+      <div class="box ticker-tape-box">
+        Info: Switch on synthesizer to begin.
+      </div>
+
+      <div class="box item-label power-box">
+        EEG-Synthesizer
+      </div>
+
+    </div>
+
+    <div class="flex space">
+
+      <div class="box osc-box">
+
+        <p class="title">Waveform</p>
+
+        <form>
+          <input type="radio" name="wave" value="sine" checked="checked"> sine<br>
+          <input type="radio" name="wave" value="square"> square<br>
+          <input type="radio" name="wave" value="triangle"> triangle<br>
+          <input type="radio" name="wave" value="sawtooth"> sawtooth<br>
+        </form>
+
+      </div>
+
+      <div class="box wave-box">
+
+        <div class="wave-box-inner">
+
+          <!-- 0.5hz and 4hz -->
+          <button onclick="adjustSound(0.5)" class="wave-button">
+            <img src="images/delta.svg" width="50px" height="50px">
+            <p>Delta</p>
+            <p>(0-4hz)</p>
+          </button>
+          <!-- 3hz and 8hz -->
+          <button onclick="adjustSound(4)" class="wave-button">
+            <img src="images/theta.svg" width="50px" height="50px">
+            <p>Theta</p>
+            <p>(4hz-7.5hz)</p>
+          </button>
+          <!-- 8hz and 12.5hz -->
+          <button onclick="adjustSound(8)" class="wave-button">
+            <img src="images/alpha.svg" width="50px" height="50px">
+            <p>Alpha</p>
+            <p>(7.5hz-12hz)</p>
+          </button>
+          <!-- 12.5hz and 30hz -->
+          <button onclick="adjustSound(12.5)" class="wave-button">
+            <img src="images/beta.svg" width="50px" height="50px">
+            <p>Beta</p>
+            <p>(12hz-30hz)</p>
+          </button>
+          <!-- 30hz and 100hz -->
+          <button onclick="adjustSound(30)" class="wave-button">
+            <img src="images/gamma.svg" width="50px" height="50px">
+            <p>Gamma</p>
+            <p>(30hz+)</p>
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="box display-box">
+        <canvas width='200px' height='200px'></canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type=”text/javascript” src=”dist/bundle.js”> </script> </body> </html>
