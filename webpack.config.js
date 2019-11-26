@@ -2,7 +2,7 @@
 module.exports = {
   entry: './public/app.js',
   output: {
-    path: __dirname + '/public/dist',
+    path: __dirname + '/dist',
     filename: 'bundle.js'
   },
   module: {
@@ -13,18 +13,6 @@ module.exports = {
           'style-loader',
           'css-loader'
         ],
-        // use: [
-        //   {
-        //     loader: 'postcss-loader',
-        //     options: {
-        //       ident: 'postcss',
-        //       plugins: [
-        //         require('tailwindcss'),
-        //         require('autoprefixer'),
-        //       ],
-        //     },
-        //   },
-        // ],
       }
     ],
   }

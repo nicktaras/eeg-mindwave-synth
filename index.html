@@ -7,56 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    .box {
-      margin: 20px;
-      border: 1px solid black;
-      border-radius: 20px;
-      padding: 20px;
-      width: fit-content;
-    }
-
-    .item-label {
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    .title {
-      text-align: center;
-      font-family: 'verdana', sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .flex.space {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .wave-box {
-      overflow: scroll;
-    }
-
-    .wave-box-inner {
-      width: 820px;
-      scroll-snap-type: x mandatory;
-      overflow-x: scroll;
-    }
-
-    .wave-button {
-      scroll-snap-align: center;
-      float: left;
-      height: 150px;
-      width: 120px;
-      padding: 5px;
-      margin: 28px 20px;
-      cursor: pointer;
-    }
-
-    .osc-box {
-      width: 264px;
-    }
-  </style>
-
+  <link href="./styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -86,12 +37,10 @@
 
         <p class="title">Waveform</p>
 
-        <form>
-          <input onclick="app.adjustWaveForm(0)" type="radio" name="wave" value="sine" checked="checked"> sine<br>
-          <input onclick="app.adjustWaveForm(1)" type="radio" name="wave" value="square"> square<br>
-          <input onclick="app.adjustWaveForm(2)" type="radio" name="wave" value="triangle"> triangle<br>
-          <input onclick="app.adjustWaveForm(3)" type="radio" name="wave" value="sawtooth"> sawtooth<br>
-        </form>
+        <input onclick="app.adjustWaveForm(0)" type="radio" name="wave" value="sine" checked="checked"> sine<br>
+        <input onclick="app.adjustWaveForm(1)" type="radio" name="wave" value="square"> square<br>
+        <input onclick="app.adjustWaveForm(2)" type="radio" name="wave" value="triangle"> triangle<br>
+        <input onclick="app.adjustWaveForm(3)" type="radio" name="wave" value="sawtooth"> sawtooth<br>
 
       </div>
 
