@@ -7,6 +7,10 @@ var app = {
     baseWaveFrequency: 200,
     secondaryWaveFrequency: 200.5,
   },
+  display: function (state) {
+    document.getElementById('wave-mode').innerHTML = this.state.inputWaveForm.toUpperCase() + " ";
+    document.getElementById('wave-form').innerHTML = this.state.waveform.toUpperCase() + " ";
+  },
   power: function (state) {
     if (state === this.state.power) return;
     this.state.power = state;
@@ -38,6 +42,7 @@ var app = {
       osc.disconnect();
       osc2.disconnect();
     }
+    this.display()
   },
   adjustSound: function (state) {
     var map = [
@@ -65,10 +70,12 @@ var app = {
     this.state.secondaryWaveFrequency = this.state.baseWaveFrequency + map[state].value;
     this.state.inputWaveForm = map[state].type;
     // console.log('Value', map[state]);
+    this.display();
   },
   adjustWaveForm: function (state) {
     var map = ['sine', 'square', 'triangle', 'sawtooth'];
     this.state.waveform = map[state];
     // console.log('Value', map[state]);
+    this.display();
   }
 };
