@@ -7,8 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>EEG-Synthesizer</title>
   <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -59,13 +58,13 @@
           </button>
           <!-- 3hz and 8hz -->
           <button onclick="app.adjustSound(1)" class="wave-button">
-            <img src="images/theta.svg" width="50px" height="50px">
+            <img src="./images/theta.svg" width="50px" height="50px">
             <p>Theta</p>
             <p>(4hz-7.5hz)</p>
           </button>
           <!-- 8hz and 12.5hz -->
           <button onclick="app.adjustSound(2)" class="wave-button">
-            <img src="images/alpha.svg" width="50px" height="50px">
+            <img src="/images/alpha.svg" width="50px" height="50px">
             <p>Alpha</p>
             <p>(7.5hz-12hz)</p>
           </button>
@@ -94,7 +93,8 @@
 
   </div>
 
-  <script type="text/javascript" src="public/app.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+
 </body>
 
 </html>

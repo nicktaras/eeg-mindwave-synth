@@ -6,11 +6,6 @@
   width: fit-content;
 }
 
-.eight-bit {
-  font-size: 12px;
-  font-family: 'Press Start 2P', cursive;
-}
-
 .item-label {
   font-family: 'Orbitron', sans-serif;
 }
@@ -18,7 +13,7 @@
 .ticker-tape-box {
   padding-top: 22px;
   text-align: center;
-  color: #828282;
+  /* color: #828282; */
   width: 370px;
 }
 
