@@ -21,3 +21,39 @@ Convert brain waves to sound
 {"eSense":{"attention":50,"meditation":56},"eegPower":{"delta":18473,"theta":17584,"lowAlpha":4841,"highAlpha":7878,"lowBeta":19420,"highBeta":12485,"lowGamma":5460,"highGamma{"rawEeg":10}SignalLevel":0}
 
 {"eSense":{"attention":50,"meditation":67},"eegPower":{"delta":85083,"theta":2514,"lowAlpha":13540,"highAlpha":1980,"lowBeta":9646,"highBeta":4820,"lowGamma":2351,"highGamma":{"rawEeg":123}alLevel":0}
+
+var searchKeys = [
+  "attention",
+  "meditation",
+  "delta",
+  "theta",
+  "lowAlpha",
+  "lowBeta",
+  "lowGamma"
+];
+
+var str =
+  '{"eSense":{"attention":51,"meditation":66}"eegPower":{"delta":76256,"theta":11587,"lowAlpha":8441,"highAlpha":2546,"lowBeta":4662,"highBeta":10323,"lowGamma":2181,"highGamma"{"rawEeg":74}gnalLevel":0}';
+
+const objectMaker = (searchKeys, str) => {
+  var input = searchKeys.map(_key => {
+    var expression = _key + "\\b.*?(,|})";
+    var regex = new RegExp(expression, "g");
+    var found = str.match(regex);
+    found[0] = found[0].replace("}", "");
+    found[0] = found[0].replace(",", "");
+    found[0] = found[0].replace('"', "");
+    found[0] = found[0].substring(found[0].indexOf(":") + 1, found[0].length);
+    return found[0];
+  });
+
+  var output = {};
+
+  input.map((val, i) => {
+    output[searchKeys[i]] = val;
+  });
+
+  return output;
+};
+
+var x = objectMaker(searchKeys, str);
