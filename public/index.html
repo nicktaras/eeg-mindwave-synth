@@ -77,12 +77,11 @@
   <script src="/socket.io.dev.js"></script>
   <script src="/jquery-1.11.1.js"></script>
   <script>
-
     var socket = io();
     $(function () {
       socket.on('eeg-data', function (data) {
-        if (data && data.theta) {
-          app.adjustBaseInput(data.theta);
+        if (data) {
+          app.adjustBaseInput(data);
         }
       });
     });

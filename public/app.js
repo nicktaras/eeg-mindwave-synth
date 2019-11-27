@@ -1,8 +1,9 @@
 var app = {
   state: {
     power: 0,
-    waveform: 'square',
-    inputWaveForm: 'delta',
+    waveform: 'sine', // wave form selected
+    inputWaveForm: 'delta', // currently selected waveform
+    inputWaveFormIndex: 0,
     baseWaveFrequency: 200,
     secondaryWaveFrequency: 200.5,
   },
@@ -49,12 +50,15 @@ var app = {
     }
     this.display()
   },
-  adjustBaseInput: function (val) {
-    console.log(val);
-    // this.state.baseWaveFrequency = 100;
-    // this.adjustSound(this.)
-    // this.osc.frequency.value = this.state.baseWaveFrequency;
-    this.osc2.frequency.value = val / 1000;// this.state.secondaryWaveFrequency;
+  adjustBaseInput: function (data) {
+    // Test 1 working - however complimentary frequency becomes void.
+    // this.osc2.frequency.value = val / 1000;
+    // console.log(this.osc2.frequency.value);
+    // Test 2
+    if (data && data[this.state.inputWaveForm]) {
+      this.osc2.frequency.value = data[this.state.inputWaveForm] / 100;
+      this.adjustSound(this.state.inputWaveFormIndex)
+    }
   },
   adjustSound: function (state) {
     var map = [
@@ -67,20 +71,21 @@ var app = {
         value: 4
       },
       {
-        type: 'alpha',
+        type: 'lowAlpha',
         value: 7.5
       },
       {
-        type: 'beta',
+        type: 'lowAlpha',
         value: 12
       },
       {
-        type: 'gamma',
+        type: 'lowAlpha',
         value: 30
       }
     ];
     this.state.secondaryWaveFrequency = this.state.baseWaveFrequency + map[state].value;
     this.state.inputWaveForm = map[state].type;
+    this.state.inputWaveFormIndex = state;
     // console.log('Value', map[state]);
     this.display();
   },
