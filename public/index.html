@@ -11,45 +11,31 @@
 </head>
 
 <body>
-
   <div class="box synth-box" style="width: 90%; margin: 5%; padding: 0;">
-
     <div class="flex space">
-
       <div class="box power-box">
         <button id="play" onclick="app.power(1)">On</button>
         <button id="stop" onclick="app.power(0)">Off</button>
       </div>
-
       <div class="box ticker-tape-box">
         <!-- <marquee /> -->
         <span class="eight-bit"> MODE: </span><span class="eight-bit" id="wave-mode"> DELTA</span>
         <span class="eight-bit"> WAVEFORM: </span><span class="eight-bit" id="wave-form"> SINE</span>
       </div>
-
       <div class="box item-label power-box">
         EEG-Synthesizer
       </div>
-
     </div>
-
     <div class="flex space">
-
       <div class="box osc-box">
-
         <p class="title">Waveform</p>
-
         <input onclick="app.adjustWaveForm(0)" type="radio" name="wave" value="sine" checked="checked"> sine<br>
         <input onclick="app.adjustWaveForm(1)" type="radio" name="wave" value="square"> square<br>
         <input onclick="app.adjustWaveForm(2)" type="radio" name="wave" value="triangle"> triangle<br>
         <input onclick="app.adjustWaveForm(3)" type="radio" name="wave" value="sawtooth"> sawtooth<br>
-
       </div>
-
       <div class="box wave-box">
-
         <div class="wave-box-inner">
-
           <!-- 0.5hz and 4hz -->
           <button onclick="app.adjustSound(0)" class="wave-button">
             <img src="images/delta.svg" width="50px" height="50px">
@@ -80,21 +66,27 @@
             <p>Gamma</p>
             <p>(30hz+)</p>
           </button>
-
         </div>
-
       </div>
-
       <div class="box display-box">
         <canvas width='200px' height='200px'></canvas>
       </div>
-
     </div>
-
   </div>
-
   <script type="text/javascript" src="app.js"></script>
+  <script src="/socket.io.dev.js"></script>
+  <script src="/jquery-1.11.1.js"></script>
+  <script>
 
+    var socket = io();
+    $(function () {
+      socket.on('eeg-data', function (data) {
+        if (data && data.theta) {
+          app.adjustBaseInput(data.theta);
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

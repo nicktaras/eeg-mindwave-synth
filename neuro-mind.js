@@ -1,10 +1,10 @@
 var net = require('net');
+var { objectMaker } = require('./util');
 let _data = {};
 const auth = {
-  appName: 'test',
-  appKey: '123'
+  appName: 'eeg-synthesizer',
+  appKey: '435F3G4T5R5H4632'
 };
-
 var client = net.connect(13854, 'localhost', function () {
   console.log('connected, now we set up the auth');
   client.write(JSON.stringify(auth));
@@ -14,20 +14,11 @@ client.on('data', function (data) {
     var input = data.toString();
     // The Data is malformed when it's received
     // We clean it up and then send it.
-    if (input.indexOf('poorSignalLev') > -1) {
-      _data = input.substring(0, input.indexOf('},"poorSignalLevel'));
-      _data += "}}";
-    } else {
-      _data = input.substring(0, input.indexOf('{"rawEeg'));
-      _data += "}}";
-    }
-    _data = JSON.parse(_data);
+    _data = objectMaker(input);
     console.log('worked', _data);
   } catch {
-    console.log('did not work', data.toString());
-    // console.log('could not convert data');
+    // no data found.
   }
-  // console.log(_data);
 });
 client.on('error', function (err) {
   console.log('Error connecting to ThinkGear client. Try starting the ThinkGear Connector app.\n', err)
@@ -35,21 +26,8 @@ client.on('error', function (err) {
 });
 exports = module.exports = function (io) {
   io.sockets.on('connection', function (socket) {
-    // Send EEG Data //
-    socket.on('eeg-data', function (data) {
-      console.log('eeg-data');
-      setInterval(() => {
-        if (_data && _data.eSense) {
-          console.log('lets send data', _data);
-          io.emit('eeg-data', _data);
-        }
-      }, 100);
-    });
+    setInterval(() => {
+      io.emit('eeg-data', _data);
+    }, 1000);
   });
 }
-
-// setInterval(() => {
-//   if (_data && _data.eSense) {
-//     console.log('lets send data', _data);
-//   }
-// }, 100);

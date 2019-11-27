@@ -1,1 +1,4 @@
 node_modules
+public/jquery-1.11.1.js
+public/socket.io-1.2.0.js
+public/socket.io.dev.js

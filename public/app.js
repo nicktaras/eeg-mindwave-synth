@@ -1,4 +1,3 @@
-
 var app = {
   state: {
     power: 0,
@@ -7,7 +6,14 @@ var app = {
     baseWaveFrequency: 200,
     secondaryWaveFrequency: 200.5,
   },
-  display: function (state) {
+  soundModule: {
+    ac: null,
+    gainNode: null,
+    filterNode: null,
+    osc: null,
+    osc2: null,
+  },
+  display: function () {
     document.getElementById('wave-mode').innerHTML = this.state.inputWaveForm.toUpperCase() + " ";
     document.getElementById('wave-form').innerHTML = this.state.waveform.toUpperCase() + " ";
   },
@@ -15,34 +21,40 @@ var app = {
     if (state === this.state.power) return;
     this.state.power = state;
     if (state === 1) {
-      // console.log('turn on', state);
-      var ac = new AudioContext();
-      var gainNode = ac.createGain();
-      var filterNode = ac.createBiquadFilter();
-      filterNode.connect(gainNode);
-      filterNode.type = "lowpass";
-      osc = ac.createOscillator();
-      osc2 = ac.createOscillator();
-      gainNode.connect(ac.destination);
-      osc.type = this.state.waveform;
-      osc2.type = this.state.waveform;
-      osc.detune.value = 0;
-      osc2.detune.value = 0;
-      osc.connect(filterNode);
-      osc2.connect(filterNode);
-      gainNode.gain.value = 1;
-      osc.frequency.value = this.state.baseWaveFrequency;
-      osc2.frequency.value = this.state.secondaryWaveFrequency;
-      osc.start();
-      osc2.start();
+      this.ac = new AudioContext();
+      this.gainNode = this.ac.createGain();
+      this.filterNode = this.ac.createBiquadFilter();
+      this.filterNode.connect(this.gainNode);
+      this.filterNode.type = "lowpass";
+      this.osc = this.ac.createOscillator();
+      this.osc2 = this.ac.createOscillator();
+      this.gainNode.connect(this.ac.destination);
+      this.osc.type = this.state.waveform;
+      this.osc2.type = this.state.waveform;
+      this.osc.detune.value = 0;
+      this.osc2.detune.value = 0;
+      this.osc.connect(this.filterNode);
+      this.osc2.connect(this.filterNode);
+      this.gainNode.gain.value = 1;
+      this.osc.frequency.value = this.state.baseWaveFrequency;
+      this.osc2.frequency.value = this.state.secondaryWaveFrequency;
+      this.osc.start();
+      this.osc2.start();
     } else {
       // console.log('turn off', state);
-      osc.stop();
-      osc2.stop();
-      osc.disconnect();
-      osc2.disconnect();
+      this.osc.stop();
+      this.osc2.stop();
+      this.osc.disconnect();
+      this.osc2.disconnect();
     }
     this.display()
+  },
+  adjustBaseInput: function (val) {
+    console.log(val);
+    // this.state.baseWaveFrequency = 100;
+    // this.adjustSound(this.)
+    // this.osc.frequency.value = this.state.baseWaveFrequency;
+    this.osc2.frequency.value = val / 1000;// this.state.secondaryWaveFrequency;
   },
   adjustSound: function (state) {
     var map = [
