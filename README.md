@@ -26,7 +26,7 @@ then run this application.
 
 ## What does this app do
 
-The application can receives brain wave data in the form of Delta, Theta, Alpha, Beta, Gamma frequencies, then plays the value back in either sine, square, triangle or sawtooth waveform.
+The application receives brain wave data in the form of Delta, Theta, Alpha, Beta, Gamma frequencies then plays in the same frequency in; either sine, square, triangle or sawtooth waveform.
 
 ## What do the different types of brain data mean
 
