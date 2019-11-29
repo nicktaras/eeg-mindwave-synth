@@ -28,9 +28,10 @@ then run this application.
 
 The application receives brain wave data in the form of Delta, Theta, Alpha, Beta, Gamma frequencies then plays in the same frequency in; either sine, square, triangle or sawtooth waveform.
 
-## What do the different types of brain data mean
+## Frequencies
 
 Delta (0 to 4 Hz):
+
 Delta brainwaves are slow, loud brainwaves (low frequency and deeply penetrating, like a drum beat). They are generated in deepest meditation and dreamless sleep. Delta waves suspend external awareness and are the source of empathy.
 
 Theta (4 to 7.5 Hz):
