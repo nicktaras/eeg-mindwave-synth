@@ -1,13 +1,13 @@
 var app = {
   state: {
-    power: 0,
-    waveform: 'sine', // wave form selected
-    inputWaveForm: 'delta', // currently selected waveform
-    inputWaveFormIndex: 0,
-    baseWaveFrequency: 200,
-    secondaryWaveFrequency: 200.5,
+    power: 0, // off 0, on 1.
+    waveform: 'sine', // sound wave
+    inputWaveForm: 'delta', // brain wave
+    inputWaveFormIndex: 0, // index of selected wave form (needs code tidy - enum object)
+    baseWaveFrequency: 200, // start at 200hz
+    secondaryWaveFrequency: 200.5, // start in delta .5 higher than base frequency
   },
-  soundModule: {
+  soundModule: { // Audio Context API
     ac: null,
     gainNode: null,
     filterNode: null,
@@ -53,10 +53,8 @@ var app = {
   adjustBaseInput: function (data) {
     // Test 1 working - however complimentary frequency becomes void.
     // this.osc2.frequency.value = val / 1000;
-    // console.log(this.osc2.frequency.value);
-    // Test 2
     if (data && data[this.state.inputWaveForm]) {
-      this.osc2.frequency.value = data[this.state.inputWaveForm] / 100;
+      this.osc.frequency.value = data[this.state.inputWaveForm] / 100;
       this.adjustSound(this.state.inputWaveFormIndex)
     }
   },

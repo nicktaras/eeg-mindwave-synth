@@ -1,24 +1,60 @@
 # brain-to-sound
-Convert brain waves to sound
 
-{"eSense":{"attention":51,"meditation":66},"eegPower":{"delta":76256,"theta":11587,"lowAlpha":8441,"highAlpha":2546,"lowBeta":4662,"highBeta":10323,"lowGamma":2181,"highGamma"{"rawEeg":74}gnalLevel":0}
+Converts brain waves to sound
 
-// To Collect
-{"delta":76256,"theta":11587,"lowAlpha":8441,"highAlpha":2546,"lowBeta":4662,"highBeta":10323,"lowGamma":2181}
+## Summary
 
-{"eSense":{"attention":40,"meditation":78},"eegPower":{"delta":44227,"theta":12660,"lowAlpha":17742,"highAlpha":16910,"lowBeta":38822,"highBeta":14316,"lowGamma":5382,"highGam{"rawEeg":-21}rSignalLevel":0}
+This is a small project to look at how the brain wave data received from
+the Neurosky Mindwave 2 headset sounds like, using the Web Audio Context API.
 
-// To Collect
-{"delta":44227,"theta":12660,"lowAlpha":17742,"highAlpha":16910,"lowBeta":38822,"highBeta":14316,"lowGamma":5382}
+You can listen to the sound your brain is making and which type of brain frequency you wish to listen to; Gamma, Delta, Theta and more.
 
-{"eSense":{"attention":43,"meditation":69},"eegPower":{"delta":62304,"theta":35532,"lowAlpha":23083,"highAlpha":5060,"lowBeta":12507,"highBeta":12805,"lowGamma":5604,"highGamm{"rawEeg":50}rSignalLevel":0}
+![alt text](https://github.com/nicktaras/brain-to-sound/blob/master/demo.png?raw=true)
 
-// To Collect
-"eegPower":{"delta":62304,"theta":35532,"lowAlpha":23083,"highAlpha":5060,"lowBeta":12507,"highBeta":12805,"lowGamma":5604}
 
-{"eSense":{"attention":48,"meditation":78},"eegPower":{"delta":22648,"theta":63755,"lowAlpha":15261,"highAlpha":31411,"lowBeta":19880,"highBeta":11363,"lowGamma":8342,"highGam{"rawEeg":37}}rSignalLevel":0}
+## Usage
 
-{"eSense":{"attention":50,"meditation":56},"eegPower":{"delta":18473,"theta":17584,"lowAlpha":4841,"highAlpha":7878,"lowBeta":19420,"highBeta":12485,"lowGamma":5460,"highGamma{"rawEeg":10}SignalLevel":0}
+run, `yarn` to gather dependencies.
+run, `node index.js` to run the application
+open `localhost:3000` in your browser
 
-{"eSense":{"attention":50,"meditation":67},"eegPower":{"delta":85083,"theta":2514,"lowAlpha":13540,"highAlpha":1980,"lowBeta":9646,"highBeta":4820,"lowGamma":2351,"highGamma":{"rawEeg":123}alLevel":0}
+## Caveat to using this lib
 
+At the moment the Application does not authorise a connection with Mind Wave.
+To get around this, you can open an official application in the background,
+then run this application.
+
+## What does this app do
+
+The application can receives brain wave data in the form of Delta, Theta, Alpha, Beta, Gamma frequencies, then plays the value back in either sine, square, triangle or sawtooth waveform.
+
+## What do the different types of brain data mean
+
+Delta (0 to 4 Hz):
+Delta brainwaves are slow, loud brainwaves (low frequency and deeply penetrating, like a drum beat). They are generated in deepest meditation and dreamless sleep. Delta waves suspend external awareness and are the source of empathy.
+
+Theta (4 to 7.5 Hz):
+
+Theta brainwaves occur most often in sleep but are also dominant in deep meditation. Theta is our gateway to learning, memory, and intuition. ... In theta we are in a dream; vivid imagery, intuition and information beyond our normal conscious awareness.
+
+Alpha: (7.5 to 12 Hz):
+
+Alpha brainwaves are dominant during quietly flowing thoughts, and in some meditative states. Alpha is 'the power of now', being here, in the present. Alpha is the resting state for the brain. Alpha waves aid overall mental coordination, calmness, alertness, mind/body integration and learning.
+
+Beta (12-30 Hz):
+
+Beta waves (12-30 Hz) typically dominate our normal waking states of consciousness and occur when attention is directed towards cognitive and other tasks. Beta is a 'fast' wave activity that is present when we are alert, attentive, focused, and engaged in problem solving or decision making.
+
+Gamma: (30+ Hz):
+
+Gamma brainwaves are the fastest of brain waves (high frequency, like a flute), and relate to simultaneous processing of information from different brain areas. ... The most subtle of the brainwave frequencies, the mind has to be quiet to access gamma.
+
+## Developer notes
+
+This application uses Websocket.io, HTML, CSS, JS, Express.js, Web Audio Context API.
+
+The data is received from a buffer on `port 13854`, which is deserialised a string which is in the format of JSON.
+
+The JSON is typically malformed, where there is an effort to collect the data from the string and convert it into a readable Javascript object - ready for the app to use.
+
+Please share any of the work you do with this tool. I'd be really interested to see what can be done, converting brain waves into musical instruments, medical tools and more.
