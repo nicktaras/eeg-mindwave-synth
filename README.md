@@ -11,7 +11,6 @@ You can listen to the sound your brain is making and which type of brain frequen
 
 ![alt text](https://github.com/nicktaras/brain-to-sound/blob/master/demo.png?raw=true)
 
-
 ## Usage
 
 run, `yarn` to gather dependencies.
@@ -54,8 +53,16 @@ Gamma brainwaves are the fastest of brain waves (high frequency, like a flute), 
 
 This application uses Websocket.io, HTML, CSS, JS, Express.js, Web Audio Context API.
 
-The data is received from a buffer on `port 13854`, which is deserialised a string which is in the format of JSON.
+The data is received from a buffer on `port 13854`, which is deserialised into a string of malformed JSON. The string is cleaned up and converted into an object which can be used in this app. 
 
-The JSON is typically malformed, where there is an effort to collect the data from the string and convert it into a readable Javascript object - ready for the app to use.
+## Additional
 
 Please share any of the work you do with this tool. I'd be really interested to see what can be done, converting brain waves into musical instruments, medical tools and more.
+
+## TODO's
+
+- Authorise the application so it can run standalone
+- Increase the logic, where more complex sounds can be created e.g. Theta and Gamma at once, sound modeling with ADSR, filters, 3-4 oscillators.
+
+
+
