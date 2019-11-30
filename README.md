@@ -5,9 +5,7 @@ Converts brain waves to sound
 ## Summary
 
 This is a small project to look at how the brain wave data received from
-the Neurosky Mindwave 2 headset sounds like, using the Web Audio Context API.
-
-You can listen to the sound your brain is making and which type of brain frequency you wish to listen to; Gamma, Delta, Theta and more.
+the Neurosky Mindwave 2 headset sounds like using the Web Audio Context API.
 
 ![alt text](https://github.com/nicktaras/brain-to-sound/blob/master/demo.png?raw=true)
 
