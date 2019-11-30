@@ -15,7 +15,7 @@ run, `yarn` to gather dependencies.
 run, `node index.js` to run the application
 open `localhost:3000` in your browser
 
-## Caveat to using this lib
+## Caveat to using this app for commercial use
 
 At the moment the Application does not authorise a connection with Mind Wave.
 To get around this, you can open an official application in the background,
@@ -60,7 +60,7 @@ Please share any of the work you do with this tool. I'd be really interested to 
 ## TODO's
 
 - Authorise the application so it can run standalone
-- Increase the logic, where more complex sounds can be created e.g. Theta and Gamma at once, sound modeling with ADSR, filters, 3-4 oscillators.
-
+- Increase the logic, where more complex sounds can be created
+- Add more control, controls for wave type for osc 1 and 2, live updates on change, modelled sounds with ADSR / Filters
 
 
